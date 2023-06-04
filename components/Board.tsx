@@ -19,7 +19,6 @@ const Board = (props: Props) => {
 
   const handleOnDragEnd = (result: DropResult) => {
     const { destination, source, type } = result;
-    console.log({ destination, source, type });
 
     //drag outside
     if (!destination) return;

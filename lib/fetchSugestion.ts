@@ -1,16 +1,20 @@
+import axios from "axios";
 import { formatTodosFoaAI } from "./formatTodosFoaAI";
 
 export async function fetchSugestion(board: Board) {
-  const todo = formatTodosFoaAI(board);
+  const todo = await formatTodosFoaAI(board);
+
+  console.log("in fetch suggestion =================>", todo);
+
   const res = await fetch("/api/generateSummary", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ todo }),
+    body: JSON.stringify(todo),
   });
 
-  const GPTData = await res.json();
+  const GPTData: any = await res.json();
   const { content } = GPTData;
 
   return content;

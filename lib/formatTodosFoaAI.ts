@@ -13,4 +13,6 @@ export async function formatTodosFoaAI(board: Board) {
     },
     {} as { [key in TypedColumn]: number }
   );
+
+  return flatArrayCounted;
 }
